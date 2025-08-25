@@ -6,7 +6,7 @@
 ## Install
 ```
 git clone https://github.com/kurtzcode/BinChecker
-cd Bin-Checker
+cd BinChecker
 python main.py
 ```
 
