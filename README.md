@@ -5,7 +5,7 @@
 
 ## Install
 ```
-git clone https://github.com/kurtzcode
+git clone https://github.com/kurtzcode/BinChecker
 cd Bin-Checker
 python main.py
 ```
