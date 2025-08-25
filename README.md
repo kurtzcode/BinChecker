@@ -19,6 +19,6 @@ python main.py
 ```
 
 ## Requirements
-- pip3 install requests
+- pip install requests
 - python 3.7++
 <br><br>
