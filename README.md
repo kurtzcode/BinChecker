@@ -5,7 +5,7 @@
 
 ## Install
 ```
-git clone https://github.com/Malam-X/Bin-Checker
+git clone https://github.com/kurtzcode
 cd Bin-Checker
 python main.py
 ```
