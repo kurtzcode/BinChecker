@@ -1,7 +1,6 @@
 ## ***Bin Credit card Checker***
 <p align="center">
   <img src="https://github.com/Malam-X/Bin-Checker/blob/main/Bin_Check.png"><br>
-  <img src="https://komarev.com/ghpvc/?username=Malam-X&label=Views&color=blue&style=plastic">
 </p>
 
 ## Install
