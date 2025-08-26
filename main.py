@@ -1,6 +1,6 @@
 # MODULES
 import requests
-from sys import exit as EXT
+import os  
 
 """main checker"""
 class main(object):
@@ -9,32 +9,34 @@ class main(object):
     @classmethod
     def check(cls, bins):
         if bins.strip() == '':
-            EXT('[!] INVALID BIN')
+            print('[!] INVALID BIN')
         else:
             cls.main(bins.strip())
 
     """Faz a requisição para a Binlist.net"""
     @classmethod
     def main(cls, x):
-        url = f"https://lookup.binlist.net/{x}"  # Endpoint da Binlist
-        headers = {"Accept-Version": "3"}       # Versão da API
+        url = f"https://lookup.binlist.net/{x}"  
+        headers = {"Accept-Version": "3"}       
 
         try:
             req = requests.get(url, headers=headers, timeout=10)
         except requests.exceptions.RequestException as e:
-            EXT(f"[!] Erro de conexão: {e}")
+            print(f"[!] Erro de conexão: {e}")
+            return
 
         try:
             data = req.json()
         except ValueError:
             print("[!] Resposta não é JSON ou inválida.")
             print("Status:", req.status_code, "| Conteúdo:", req.text[:200], "...")
-            EXT("[!] EXIT...")
+            return
 
         if req.status_code != 200 or not data:
-            EXT("[!] Erro na consulta BIN ou BIN não encontrado.")
+            print("[!] Erro na consulta BIN ou BIN não encontrado.")
+            return
 
-        # Mapeia os campos retornados pela Binlist
+        
         r = {
             'bin': x,
             'vendor': data.get('scheme', ''),   # Bandeira
@@ -64,11 +66,21 @@ class main(object):
  [+] Bank: {r['bank']}
  [+] Country: {r['country']}""")
 
+
 if __name__ == '__main__':
-    """Leitura do BIN pelo usuário"""
-    full_number = input('[+] BIN: ').strip()
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    while True:
+        
+        full_number = input('[+] BIN: ').strip()
 
-    # Pega apenas os 6 primeiros dígitos
-    BIN_NUMBER = full_number[:6]
+        if not full_number.isdigit() or len(full_number) < 6:
+            print('[!] BIN inválido! Digite apenas números e pelo menos 6 dígitos.')
+            continue
 
-    main.check(BIN_NUMBER)
+        
+        BIN_NUMBER = full_number[:6]
+
+        main.check(BIN_NUMBER)
+        print("\n" + "-"*50 + "\n")
