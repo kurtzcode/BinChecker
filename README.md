@@ -1,4 +1,4 @@
-## ***Bin Credit card Checker***
+## ***Bin Credit Card Checker***
 <p align="center">
   <img src="https://github.com/Malam-X/Bin-Checker/blob/main/Bin_Check.png"><br>
 </p>
